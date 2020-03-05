@@ -1,17 +1,23 @@
 import {
     getPatterns,
-    getChunks,
+    getChunksVerb,
+    getChunksAdverb,
     postPatterns,
-    postChunks,
+    postChunksVerb,
+    postChunksAdverb,
     deletePatterns,
-    deleteChunks
+    deleteChunksVerb,
+    deleteChunksAdverb
 } from './data';
 
 export {
     getPatterns,
-    getChunks,
+    getChunksVerb,
+    getChunksAdverb,
     postPatterns,
-    postChunks,
+    postChunksVerb,
+    postChunksAdverb,
     deletePatterns,
-    deleteChunks
+    deleteChunksVerb,
+    deleteChunksAdverb
 };

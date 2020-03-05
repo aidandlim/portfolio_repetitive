@@ -1,0 +1,97 @@
+.list {
+    width: 100%;
+    height: auto;
+
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+
+    position: relative;
+    float: left;
+}
+
+.list-container {
+    width: 85%;
+    max-width: 40rem;
+    height: auto;
+
+    padding: 1rem 1rem 0.5rem 1rem;
+
+    position: relative;
+    float: left;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    background-color: #B2DFDB;
+    border-radius: 1rem;
+}
+
+.list-null {
+    width: 100%;
+    height: 5rem;
+
+    padding: 0 0 0.5rem 0;
+    position: relative;
+    float: left;
+
+    color: #00695C;
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 5rem;
+    text-align: center;
+}
+
+.list-element {
+    width: calc(100% - 2rem);
+    height: 2rem;
+
+    margin: 0 1rem 1rem 1rem;
+
+    position: relative;
+    float: left;
+
+    background-color: #E0F2F180;
+    border-radius: 0.5rem;
+}
+
+.list-element:hover {
+    background-color: #E0F2F1;
+}
+
+.list-element > div {
+    width: 45%;
+    height: 100%;
+
+    padding: 0 1rem;
+    
+    position: relative;
+    float: left;
+
+    color: #00695C;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 2rem;
+
+    box-sizing: border-box;
+}
+
+.list-element-delete { 
+    width: auto;
+    height: 1.5rem;
+
+    margin: 0.25rem 1rem 0.25rem 0;
+    padding: 0;
+
+    position: relative;
+    float: right;
+
+    color: lightcoral;
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-align: right;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+    outline: none;
+}

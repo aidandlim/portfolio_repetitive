@@ -1,0 +1,40 @@
+.type {
+    width: 100%;
+    height: 4rem;
+
+    margin-bottom: 0.5em;
+    padding: 1rem;
+
+    position: relative;
+    float: left;
+
+    box-sizing: border-box;
+}
+
+.type-element,
+.type-element-active {
+    width: 7rem;
+    height: 2rem;
+
+    margin: 0 0.05rem;
+
+    position: relative;
+    float: left;
+
+    color: #00695c;
+    font-size: 0.55rem;
+    font-weight: 700;
+
+    border: none;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.type-element {
+    background-color: #80cbc4;
+}
+
+.type-element-active {
+    background-color: #4db6ac;
+}

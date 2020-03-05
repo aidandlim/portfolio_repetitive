@@ -10,11 +10,17 @@ const Mode = ({ mode, setMode }) => {
                     className={mode === 0 ? 'mode-button-active' : 'mode-button'}
                     onClick={() => setMode(0)}
                 >
-                    UPDATE
+                    Add
                 </button>
                 <button
                     className={mode === 1 ? 'mode-button-active' : 'mode-button'}
                     onClick={() => setMode(1)}
+                >
+                    LIST
+                </button>
+                <button
+                    className={mode === 2 ? 'mode-button-active' : 'mode-button'}
+                    onClick={() => setMode(2)}
                 >
                     DRILL
                 </button>

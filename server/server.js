@@ -19,8 +19,15 @@ app.get('/api/patterns', (req, res) => {
     res.json(JSON.parse(rawData));
 });
 
-app.get('/api/chunks', (req, res) => {
-    const filePath = path.join(__dirname, 'store', 'chunks');
+app.get('/api/chunks/verb', (req, res) => {
+    const filePath = path.join(__dirname, 'store', 'chunks_verb');
+    const rawData = fs.readFileSync(filePath, 'utf8');
+
+    res.json(JSON.parse(rawData));
+});
+
+app.get('/api/chunks/adverb', (req, res) => {
+    const filePath = path.join(__dirname, 'store', 'chunks_adverb');
     const rawData = fs.readFileSync(filePath, 'utf8');
 
     res.json(JSON.parse(rawData));
@@ -38,14 +45,15 @@ app.post('/api/patterns', (req, res) => {
 
     fs.writeFileSync(filePath, JSON.stringify(rawdata));
 
-    res.json(data);
+    res.status(200);
+    res.end();
 });
 
-app.post('/api/chunks', (req, res) => {
+app.post('/api/chunks/verb', (req, res) => {
     const english = req.body.english;
     const korean = req.body.korean;
 
-    const filePath = path.join(__dirname, 'store', 'chunks');
+    const filePath = path.join(__dirname, 'store', 'chunks_verb');
     const rawdata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
     const data = { id: Date.now(), english, korean };
@@ -53,15 +61,24 @@ app.post('/api/chunks', (req, res) => {
 
     fs.writeFileSync(filePath, JSON.stringify(rawdata));
 
-    res.json(data);
+    res.status(200);
+    res.end();
 });
 
-app.put('/api/patterns', (req, res) => {
-    res.json('put data');
-});
+app.post('/api/chunks/adverb', (req, res) => {
+    const english = req.body.english;
+    const korean = req.body.korean;
 
-app.put('/api/chunks', (req, res) => {
-    res.json('put data');
+    const filePath = path.join(__dirname, 'store', 'chunks_adverb');
+    const rawdata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+
+    const data = { id: Date.now(), english, korean };
+    rawdata.push(data);
+
+    fs.writeFileSync(filePath, JSON.stringify(rawdata));
+
+    res.status(200);
+    res.end();
 });
 
 app.delete('/api/patterns', (req, res) => {
@@ -76,12 +93,37 @@ app.delete('/api/patterns', (req, res) => {
 
     fs.writeFileSync(filePath, JSON.stringify(array));
 
-    res.status(200);
-    res.end();
+    res.json(array);
 });
 
-app.delete('/api/chunks', (req, res) => {
-    res.json('delete data');
+app.delete('/api/chunks/verb', (req, res) => {
+    const id = req.query.id;
+
+    const filePath = path.join(__dirname, 'store', 'chunks_verb');
+    const rawData = fs.readFileSync(filePath, 'utf8');
+
+    const array = JSON.parse(rawData);
+    const index = array.findIndex(element => element.id == id);
+    array.splice(index, 1);
+
+    fs.writeFileSync(filePath, JSON.stringify(array));
+
+    res.json(array);
+});
+
+app.delete('/api/chunks/adverb', (req, res) => {
+    const id = req.query.id;
+
+    const filePath = path.join(__dirname, 'store', 'chunks_adverb');
+    const rawData = fs.readFileSync(filePath, 'utf8');
+
+    const array = JSON.parse(rawData);
+    const index = array.findIndex(element => element.id == id);
+    array.splice(index, 1);
+
+    fs.writeFileSync(filePath, JSON.stringify(array));
+
+    res.json(array);
 });
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
