@@ -33,7 +33,7 @@ app.post('/api/patterns', (req, res) => {
     const filePath = path.join(__dirname, 'store', 'patterns');
     const rawdata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-    const data = { id: rawdata.length, english, korean };
+    const data = { id: Date.now(), english, korean };
     rawdata.push(data);
 
     fs.writeFileSync(filePath, JSON.stringify(rawdata));
@@ -48,7 +48,7 @@ app.post('/api/chunks', (req, res) => {
     const filePath = path.join(__dirname, 'store', 'chunks');
     const rawdata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
-    const data = { id: rawdata.length, english, korean };
+    const data = { id: Date.now(), english, korean };
     rawdata.push(data);
 
     fs.writeFileSync(filePath, JSON.stringify(rawdata));
@@ -65,7 +65,19 @@ app.put('/api/chunks', (req, res) => {
 });
 
 app.delete('/api/patterns', (req, res) => {
-    res.json('delete data');
+    const id = req.query.id;
+
+    const filePath = path.join(__dirname, 'store', 'patterns');
+    const rawData = fs.readFileSync(filePath, 'utf8');
+
+    const array = JSON.parse(rawData);
+    const index = array.findIndex(element => element.id == id);
+    array.splice(index, 1);
+
+    fs.writeFileSync(filePath, JSON.stringify(array));
+
+    res.status(200);
+    res.end();
 });
 
 app.delete('/api/chunks', (req, res) => {

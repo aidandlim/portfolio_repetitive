@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import { getPatterns, getChunks, postPatterns, postChunks } from '../../data';
+import {
+    getPatterns,
+    getChunks,
+    postPatterns,
+    postChunks,
+    deletePatterns,
+    deleteChunks
+} from '../../data';
 
 import './index.css';
 
@@ -35,9 +42,26 @@ const Update = () => {
                     setter(value => [...value, res.data]);
                     english.value = '';
                     korean.value = '';
+
+                    english.focus();
                 }
             });
         }
+    };
+
+    const _handleDelete = id => {
+        const func = type ? deleteChunks : deletePatterns;
+
+        func(id, res => {
+            if (res.status === 200) {
+                const setter = type ? setChunks : setPatterns;
+
+                setter(array => {
+                    console.log(array.findIndex(element => +element.id === +id));
+                    // return array.splice(array.findIndex(element => +element.id === +id))
+                });
+            }
+        });
     };
 
     return (
@@ -57,7 +81,6 @@ const Update = () => {
                 </button>
             </div>
             <form name='update' onSubmit={_handleForm} autoComplete='off'>
-                <input type='hidden' name='id' />
                 <input type='text' name='english' placeholder='English' />
                 <input type='text' name='korean' placeholder='Korean' />
                 <button type='submit'>Save</button>
@@ -68,14 +91,24 @@ const Update = () => {
                           <div className='update-list' key={index}>
                               <div>{data.english}</div>
                               <div>{data.korean}</div>
-                              <button className='update-list-delete'>delete</button>
+                              <button
+                                  className='update-list-delete'
+                                  onClick={() => _handleDelete(data.id)}
+                              >
+                                  delete
+                              </button>
                           </div>
                       ))
                     : patterns.map((data, index) => (
                           <div className='update-list' key={index}>
                               <div>{data.english}</div>
                               <div>{data.korean}</div>
-                              <button className='update-list-delete'>delete</button>
+                              <button
+                                  className='update-list-delete'
+                                  onClick={() => _handleDelete(data.id)}
+                              >
+                                  delete
+                              </button>
                           </div>
                       ))}
             </div>

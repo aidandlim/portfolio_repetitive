@@ -24,18 +24,6 @@ export const postChunks = (english, korean, cb) => {
     });
 };
 
-export const putPatterns = (id, english, korean, cb) => {
-    axios.put('/api/patterns', { id, english, korean }).then(res => {
-        cb(res);
-    });
-};
-
-export const putChunks = (id, english, korean, cb) => {
-    axios.put('/api/chunks', { id, english, korean }).then(res => {
-        cb(res);
-    });
-};
-
 export const deletePatterns = (id, cb) => {
     axios.delete('/api/patterns', { params: { id } }).then(res => {
         cb(res);

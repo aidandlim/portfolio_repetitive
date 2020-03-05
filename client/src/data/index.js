@@ -3,8 +3,6 @@ import {
     getChunks,
     postPatterns,
     postChunks,
-    putPatterns,
-    putChunks,
     deletePatterns,
     deleteChunks
 } from './data';
@@ -14,8 +12,6 @@ export {
     getChunks,
     postPatterns,
     postChunks,
-    putPatterns,
-    putChunks,
     deletePatterns,
     deleteChunks
 };
