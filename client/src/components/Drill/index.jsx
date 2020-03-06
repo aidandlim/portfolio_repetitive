@@ -84,7 +84,7 @@ const Drill = ({ login, setMode }) => {
                     </div>
                 ) : (
                     <div className='drill-process'>
-                        <div className='drill-number'>{numberOfDone + 1} / {numberOfDrill}</div>
+                        <div className='drill-number'>{numberOfDone === numberOfDrill ? numberOfDrill : numberOfDone + 1} / {numberOfDrill}</div>
                         <div className='drill-process-text'>
                             <div className='drill-process-english'>
                                 {drillSet.map((drill, index) => (
