@@ -20,8 +20,6 @@ const Drill = () => {
             });
         }
 
-        console.log(list);
-
         setDrillSet(list);
     }, []);
 
