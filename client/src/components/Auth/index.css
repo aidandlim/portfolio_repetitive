@@ -1,0 +1,99 @@
+.auth {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+
+    background-color: #00BFA5;
+}
+
+.auth-container {
+    width: 20rem;
+    height: auto;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.auth-title {
+    width: 100%;
+    height: 2rem;
+
+    margin-bottom: 5rem;
+
+    position: relative;
+    float: left;
+
+    color: white;
+    font-size: 2rem;
+    font-weight: 900;
+    text-align: center;
+    line-height: 3rem;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.auth-label {
+    width: 100%;
+    height: 4rem;
+
+    margin-bottom: 2rem;
+
+    position: relative;
+    float: left;
+}
+
+.auth-p {
+    width: 100%;
+    height: 1.5rem;
+
+    margin: 0;
+    padding: 0;
+
+    position: relative;
+    float: left;
+
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+}
+
+.auth-input {
+    width: 20rem;
+    height: 2.5rem;
+
+    position: relative;
+    float: left;
+
+    color: white;
+    font-size: 1rem;
+    font-weight: 900;
+
+    background: none;
+    border: none;
+    border-bottom: solid #80CBC4 0.1rem;
+
+    outline: none;
+}
+
+.auth-button {
+    width: 100%;
+    height: 2.5rem;
+
+    position: relative;
+    float: left;
+
+    color: #00796B;
+    font-size: 1rem;
+    font-weight: 700;
+
+    background-color: #B2DFDB;
+    border: none;
+    border-radius: 0.5rem;
+
+    outline: none;
+}

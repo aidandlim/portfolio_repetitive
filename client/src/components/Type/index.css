@@ -13,10 +13,9 @@
 
 .type-element,
 .type-element-active {
-    width: auto;
+    width: calc(100% / 3);
     height: 2rem;
 
-    margin-right: 0.75rem;
     padding: 0 1rem;
 
     position: relative;
@@ -28,7 +27,6 @@
 
     background-color: #80CBC4;
     border: none;
-    border-radius: 0.5rem;
     box-sizing: border-box;
 
     cursor: pointer;

@@ -1,29 +1,3 @@
-.drill {
-    width: 100%;
-    height: auto;
-
-    margin-top: 5rem;
-    margin-bottom: 2rem;
-
-    position: relative;
-    float: left;
-}
-
-.drill-container {
-    width: 85%;
-    max-width: 40rem;
-    height: auto;
-
-    padding: 1rem;
-
-    position: relative;
-    float: left;
-    left: 50%;
-    transform: translate(-50%, 0);
-
-    background-color: #b2dfdb;
-    border-radius: 1rem;
-}
 
 .drill-initialize {
     width: 100%;
@@ -38,6 +12,7 @@
     height: 3rem;
 
     margin: 0;
+    margin-bottom: 1rem;
     padding: 0;
 
     position: relative;
@@ -55,7 +30,8 @@
     height: 2rem;
 
     margin: 0 calc((100% - 15rem) / 2);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    padding: 0;
 
     position: relative;
     float: left;
@@ -76,6 +52,7 @@
     height: 2rem;
 
     margin: 0 calc((100% - 6rem) / 2);
+    margin-bottom: 1rem;
 
     position: relative;
     float: left;
@@ -100,9 +77,23 @@
     float: left;
 }
 
+.drill-number {
+    width: 100%;
+    height: 2rem;
+
+    position: relative;
+    float: left;
+
+    color: #00796B;
+    font-size: 1rem;
+    font-weight: 900;
+    text-align: center;
+    line-height: 3rem;
+}
+
 .drill-process-text {
     width: 100%;
-    height: 27rem;
+    height: calc(100% - 5rem);
 
     position: relative;
     float: left;
@@ -110,8 +101,7 @@
 
 .drill-process-english,
 .drill-process-korean {
-    width: auto;
-    max-width: 80%;
+    width: 90%;
     height: auto;
 
     position: absolute;
@@ -120,7 +110,7 @@
     transform: translate(-50%, -50%);
 
     color: #00796B;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.5;
 }
@@ -154,6 +144,7 @@
     color: white;
     font-size: 1.25rem;
     font-weight: 700;
+    text-align: left;
     line-height: 3rem;
 
     background-color: #B0BEC5;

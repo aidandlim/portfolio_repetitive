@@ -1,31 +1,4 @@
-.add {
-    width: 100%;
-    height: auto;
-
-    margin-top: 5rem;
-    margin-bottom: 2rem;
-    
-    position: relative;
-    float: left;
-}
-
-.add-container {
-    width: 85%;
-    max-width: 40rem;
-    height: auto;
-
-    padding: 1rem;
-
-    position: relative;
-    float: left;
-    left: 50%;
-    transform: translate(-50%, 0);
-
-    background-color: #B2DFDB;
-    border-radius: 1rem;
-}
-
-.add-container > form > input {
+.add-input {
     width: calc(100% - 2rem);
     height: 5rem;
 
@@ -47,7 +20,7 @@
     outline: none;
 }
 
-.add-container > form > button {
+.add-button {
     width: 5rem;
     height: 2rem;
 

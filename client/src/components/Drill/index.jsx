@@ -4,7 +4,7 @@ import { get, getType, getTypeSize } from '../../data';
 
 import './index.css';
 
-const Drill = () => {
+const Drill = ({ login, setMode }) => {
     const [numberOfDrill, setNumberOfDrill] = useState(-1);
     const [numberOfDone, setNumberOfDone] = useState(0);
     const [drillSet, setDrillSet] = useState([]);
@@ -15,13 +15,17 @@ const Drill = () => {
         let list = [];
 
         for (let i = 0; i < getTypeSize(); i++) {
-            get(getType(i), res => {
+            get(login, getType(i), res => {
+                if(res.data.length === 0) {
+                    alert(`It needs to have at least one data in ${getType(i)} list :(`);
+                    setMode(0);
+                }
                 list[i] = res.data;
             });
         }
 
         setDrillSet(list);
-    }, []);
+    }, [login, setMode]);
 
     useEffect(() => {
         if (numberOfDrill !== -1) {
@@ -36,6 +40,7 @@ const Drill = () => {
             } else {
                 alert('Done!');
                 setNumberOfDrill(-1);
+                setNumberOfDone(0);
             }
         }
     }, [drillSet, numberOfDrill, numberOfDone]);
@@ -67,8 +72,8 @@ const Drill = () => {
     };
 
     return (
-        <div className='drill'>
-            <div className='drill-container'>
+        <div className='default'>
+            <div className='default-container'>
                 {numberOfDrill === -1 ? (
                     <div className='drill-initialize'>
                         <form name='form_numofdrill' onSubmit={_handleForm}>
@@ -79,6 +84,7 @@ const Drill = () => {
                     </div>
                 ) : (
                     <div className='drill-process'>
+                        <div className='drill-number'>{numberOfDone + 1} / {numberOfDrill}</div>
                         <div className='drill-process-text'>
                             <div className='drill-process-english'>
                                 {drillSet.map((drill, index) => (

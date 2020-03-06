@@ -6,7 +6,7 @@ import { post, getType } from '../../data';
 
 import './index.css';
 
-const Add = () => {
+const Add = ({ login }) => {
     const [type, setType] = useState(0);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const Add = () => {
         const korean = form.korean;
 
         if (english.value !== '' && korean.value !== '') {
-            post(getType(type), english.value, korean.value, res => {
+            post(login, getType(type), english.value, korean.value, res => {
                 if (res.status === 200) {
                     english.value = '';
                     english.focus();
@@ -34,13 +34,13 @@ const Add = () => {
     };
 
     return (
-        <div className='add'>
-            <div className='add-container'>
+        <div className='default'>
+            <div className='default-container'>
                 <Type type={type} setType={setType} />
                 <form name='form_add' onSubmit={_handleForm} autoComplete='off'>
-                    <input type='text' name='english' placeholder='English' />
-                    <input type='text' name='korean' placeholder='Korean' />
-                    <button type='submit'>Save</button>
+                    <input className='add-input' type='text' name='english' placeholder='English' />
+                    <input className='add-input' type='text' name='korean' placeholder='Korean' />
+                    <button className='add-button' type='submit'>Save</button>
                 </form>
             </div>
         </div>

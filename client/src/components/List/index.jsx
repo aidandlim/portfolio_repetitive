@@ -6,7 +6,7 @@ import { get, remove, getType } from '../../data';
 
 import './index.css';
 
-const List = () => {
+const List = ({ login }) => {
     const [type, setType] = useState(0);
     const [list, setList] = useState([]);
     const [isDone, setIsDone] = useState(false);
@@ -15,14 +15,14 @@ const List = () => {
         setList([]);
         setIsDone(false);
 
-        get(getType(type), res => {
+        get(login, getType(type), res => {
             setList(res.data);
             setIsDone(true);
         });
-    }, [type]);
+    }, [login, type]);
 
     const _handleDelete = id => {
-        remove(getType(type), id, res => {
+        remove(login, getType(type), id, res => {
             if (res.status === 200) {
                 setList(res.data);
             }
@@ -30,8 +30,8 @@ const List = () => {
     };
 
     return (
-        <div className='list'>
-            <div className='list-container'>
+        <div className='default'>
+            <div className='default-container'>
                 <Type type={type} setType={setType} />
                 {list.length !== 0 ? (
                     list.map((data, index) => (
