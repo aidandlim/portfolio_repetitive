@@ -1,5 +1,5 @@
 .mode {
-    width: 100%;
+    width: calc(100% - 5px);
     height: 5rem;
 
     position: fixed;
