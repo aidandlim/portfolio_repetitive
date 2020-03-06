@@ -51,9 +51,10 @@
 }
 
 .drill-initialize > form > input {
-    width: 100%;
+    width: 15rem;
     height: 2rem;
 
+    margin: 0 calc((100% - 15rem) / 2);
     margin-bottom: 1rem;
 
     position: relative;
