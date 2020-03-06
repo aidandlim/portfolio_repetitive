@@ -10,7 +10,7 @@ const Mode = ({ mode, setMode }) => {
                     className={mode === 0 ? 'mode-button-active' : 'mode-button'}
                     onClick={() => setMode(0)}
                 >
-                    Add
+                    ADD
                 </button>
                 <button
                     className={mode === 1 ? 'mode-button-active' : 'mode-button'}

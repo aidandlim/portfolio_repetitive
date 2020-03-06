@@ -2,14 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Type from '../Type';
 
-import {
-    getPatterns,
-    getChunksVerb,
-    getChunksAdverb,
-    deletePatterns,
-    deleteChunksVerb,
-    deleteChunksAdverb
-} from '../../data';
+import { get, remove, getType } from '../../data';
 
 import './index.css';
 
@@ -22,26 +15,14 @@ const List = () => {
         setList([]);
         setIsDone(false);
 
-        let func;
-
-        if (type === 0) func = getPatterns;
-        if (type === 1) func = getChunksVerb;
-        if (type === 2) func = getChunksAdverb;
-
-        func(res => {
+        get(getType(type), res => {
             setList(res.data);
             setIsDone(true);
         });
     }, [type]);
 
     const _handleDelete = id => {
-        let func;
-
-        if (type === 0) func = deletePatterns;
-        if (type === 1) func = deleteChunksVerb;
-        if (type === 2) func = deleteChunksAdverb;
-
-        func(id, res => {
+        remove(getType(type), id, res => {
             if (res.status === 200) {
                 setList(res.data);
             }

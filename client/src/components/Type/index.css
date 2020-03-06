@@ -13,28 +13,30 @@
 
 .type-element,
 .type-element-active {
-    width: 7rem;
+    width: auto;
     height: 2rem;
 
-    margin: 0 0.05rem;
+    margin-right: 0.75rem;
+    padding: 0 1rem;
 
     position: relative;
     float: left;
 
-    color: #00695c;
-    font-size: 0.55rem;
-    font-weight: 700;
+    color: #004D40;
+    font-size: 0.65rem;
+    font-weight: 400;
 
+    background-color: #80CBC4;
     border: none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
 
     cursor: pointer;
     outline: none;
 }
 
-.type-element {
-    background-color: #80cbc4;
-}
-
 .type-element-active {
-    background-color: #4db6ac;
+    color: #A7FFEB;
+    font-weight: 900;
+    background-color: #009688;
 }

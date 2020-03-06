@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Type from '../Type';
 
-import { postPatterns, postChunksVerb, postChunksAdverb } from '../../data';
+import { post, getType } from '../../data';
 
 import './index.css';
 
 const Add = () => {
     const [type, setType] = useState(0);
+
+    useEffect(() => {
+        document.form_add.english.focus();
+    }, [type]);
 
     const _handleForm = e => {
         e.preventDefault();
@@ -17,13 +21,7 @@ const Add = () => {
         const korean = form.korean;
 
         if (english.value !== '' && korean.value !== '') {
-            let func;
-
-            if (type === 0) func = postPatterns;
-            if (type === 1) func = postChunksVerb;
-            if (type === 2) func = postChunksAdverb;
-
-            func(english.value, korean.value, res => {
+            post(getType(type), english.value, korean.value, res => {
                 if (res.status === 200) {
                     english.value = '';
                     english.focus();

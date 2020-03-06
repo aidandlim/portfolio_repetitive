@@ -1,23 +1,5 @@
-import {
-    getPatterns,
-    getChunksVerb,
-    getChunksAdverb,
-    postPatterns,
-    postChunksVerb,
-    postChunksAdverb,
-    deletePatterns,
-    deleteChunksVerb,
-    deleteChunksAdverb
-} from './data';
+import { get, post, remove } from './data';
 
-export {
-    getPatterns,
-    getChunksVerb,
-    getChunksAdverb,
-    postPatterns,
-    postChunksVerb,
-    postChunksAdverb,
-    deletePatterns,
-    deleteChunksVerb,
-    deleteChunksAdverb
-};
+import { getType, getTypeSize } from './type';
+
+export { get, post, remove, getType, getTypeSize };
