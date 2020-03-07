@@ -14,6 +14,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
+        "prestart": "rm -f ./node_modules/webpack-dev-server/ssl/server.pem && cp -f ./cert/server.pem ./node_modules/webpack-dev-server/ssl",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
@@ -33,5 +34,5 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "http://localhost:8443/"
+    "proxy": "https://localhost:8443/"
 }
