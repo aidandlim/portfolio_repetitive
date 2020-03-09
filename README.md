@@ -10,7 +10,7 @@
 
 ## Preview
 
-***Not Yet***
+<img src="https://github.com/aidandlim/portfolio_repetitive/blob/master/PREVIEW.png?raw=true" width="100%" title="preview" alt="preview">
 
 ---
 
