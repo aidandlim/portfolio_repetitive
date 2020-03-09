@@ -15,13 +15,13 @@ const Type = ({ type, setType }) => {
                 className={type === 1 ? 'type-element-active' : 'type-element'}
                 onClick={() => setType(1)}
             >
-                VERB CHUNKS
+                MAIN CHUNKS
             </button>
             <button
                 className={type === 2 ? 'type-element-active' : 'type-element'}
                 onClick={() => setType(2)}
             >
-                ADVERB CHUNKS
+                EXTRA CHUNKS
             </button>
         </div>
     );
