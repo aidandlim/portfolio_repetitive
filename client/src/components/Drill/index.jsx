@@ -8,7 +8,7 @@ const Drill = ({ login, setMode }) => {
     const [numberOfDrill, setNumberOfDrill] = useState(-1);
     const [numberOfDone, setNumberOfDone] = useState(0);
     const [drillSet, setDrillSet] = useState([]);
-    const [drillNums, setDrillNums] = useState([0, 0, 0]);
+    const [drillNums, setDrillNums] = useState([0, 0]);
     const [isHint, setIsHint] = useState(false);
 
     useEffect(() => {
@@ -42,6 +42,8 @@ const Drill = ({ login, setMode }) => {
                 setNumberOfDrill(-1);
                 setNumberOfDone(0);
             }
+        } else {
+            document.form_numofdrill.number.focus();
         }
     }, [drillSet, numberOfDrill, numberOfDone]);
 
@@ -68,7 +70,9 @@ const Drill = ({ login, setMode }) => {
 
     const _handleNext = () => {
         _handleHint(true);
-        setNumberOfDone(num => num + 1);
+        setTimeout(() => {
+            setNumberOfDone(num => num + 1);
+        }, 500);
     };
 
     return (

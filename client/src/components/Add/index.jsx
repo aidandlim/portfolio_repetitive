@@ -24,8 +24,8 @@ const Add = ({ login }) => {
             post(login, getType(type), english.value, korean.value, res => {
                 if (res.status === 200) {
                     english.value = '';
-                    english.focus();
                     korean.value = '';
+                    english.focus();
                 } else {
                     alert('Error occured!');
                 }
@@ -40,7 +40,7 @@ const Add = ({ login }) => {
                 <form name='form_add' onSubmit={_handleForm} autoComplete='off'>
                     <input className='add-input' type='text' name='english' placeholder='English' />
                     <input className='add-input' type='text' name='korean' placeholder='Korean' />
-                    <button className='add-button' type='submit'>Save</button>
+                    <button className='add-button' type='submit'>SAVE</button>
                 </form>
             </div>
         </div>

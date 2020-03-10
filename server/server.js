@@ -38,8 +38,7 @@ app.post('/api/auth', (req, res) => {
 
         fs.mkdirSync(path.join(dirPath, username));
         fs.writeFileSync(path.join(dirPath, username, 'patterns'), '[]');
-        fs.writeFileSync(path.join(dirPath, username, 'chunks_verb'), '[]');
-        fs.writeFileSync(path.join(dirPath, username, 'chunks_adverb'), '[]');
+        fs.writeFileSync(path.join(dirPath, username, 'chunks'), '[]');
 
         res.json(200);
     } else {

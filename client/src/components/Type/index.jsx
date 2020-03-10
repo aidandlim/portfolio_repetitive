@@ -15,13 +15,7 @@ const Type = ({ type, setType }) => {
                 className={type === 1 ? 'type-element-active' : 'type-element'}
                 onClick={() => setType(1)}
             >
-                MAIN CHUNKS
-            </button>
-            <button
-                className={type === 2 ? 'type-element-active' : 'type-element'}
-                onClick={() => setType(2)}
-            >
-                EXTRA CHUNKS
+                CHUNKS
             </button>
         </div>
     );

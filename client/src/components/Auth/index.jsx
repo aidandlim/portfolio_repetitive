@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { auth } from '../../data';
 
 import './index.css';
 
 const Auth = ({ setLogin }) => {
+    useEffect(() => {
+        document.form_auth.username.focus();
+    }, []);
+
     const _handleForm = e => {
         e.preventDefault();
 
