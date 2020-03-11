@@ -1,10 +1,9 @@
 export const getType = type => {
     if (type === 0) return 'patterns';
-    if (type === 1) return 'chunks_main';
-    if (type === 2) return 'chunks_extra';
+    if (type === 1) return 'chunks';
     return null;
 };
 
 export const getTypeSize = () => {
-    return 3;
+    return 2;
 };

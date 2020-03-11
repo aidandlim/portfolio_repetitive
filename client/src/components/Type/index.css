@@ -13,7 +13,7 @@
 
 .type-element,
 .type-element-active {
-    width: calc(100% / 3);
+    width: calc(100% / 2);
     height: 2rem;
 
     padding: 0 1rem;
