@@ -15,7 +15,7 @@ const Drill = ({ login, setMode }) => {
         let list = [];
 
         for (let i = 0; i < getTypeSize(); i++) {
-            get(login, getType(i), res => {
+            get(login.username, getType(i), res => {
                 if(res.data.length === 0) {
                     alert(`It needs to have at least one data in ${getType(i)} list :(`);
                     setMode(0);
@@ -25,7 +25,7 @@ const Drill = ({ login, setMode }) => {
         }
 
         setDrillSet(list);
-    }, [login, setMode]);
+    }, [login.username, setMode]);
 
     useEffect(() => {
         if (numberOfDrill !== -1) {

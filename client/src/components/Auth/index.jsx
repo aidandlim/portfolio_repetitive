@@ -13,8 +13,8 @@ const Auth = ({ setLogin }) => {
         const password = form.password.value;
 
         auth(username, password, (res) => {
-            if(res.data === 200) {
-                setLogin(username);
+            if(res.data !== null) {
+                setLogin(res.data);
             } else {
                 alert('User information is not correct :(');
             }

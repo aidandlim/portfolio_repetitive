@@ -29,7 +29,7 @@ app.post('/api/auth', (req, res) => {
     const index = array.findIndex(element => element.username == username);
 
     if (index === -1) {
-        const data = { id: Date.now(), username, password };
+        const data = { id: Date.now(), username, password, isPublicPatterns: false, isPublicChunks: false };
         array.push(data);
         
         fs.writeFileSync(filePath, JSON.stringify(array));
@@ -41,12 +41,12 @@ app.post('/api/auth', (req, res) => {
         fs.writeFileSync(path.join(dirPath, username, 'chunks_verb'), '[]');
         fs.writeFileSync(path.join(dirPath, username, 'chunks_adverb'), '[]');
 
-        res.json(200);
+        res.json(data);
     } else {
         if (array[index].password === password) {
-            res.json(200);
+            res.json(array[index]);
         } else {
-            res.json(400);
+            res.json(null);
         }
     }
 });

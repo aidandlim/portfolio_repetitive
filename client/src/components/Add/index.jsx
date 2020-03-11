@@ -21,7 +21,7 @@ const Add = ({ login }) => {
         const korean = form.korean;
 
         if (english.value !== '' && korean.value !== '') {
-            post(login, getType(type), english.value, korean.value, res => {
+            post(login.username, getType(type), english.value, korean.value, res => {
                 if (res.status === 200) {
                     english.value = '';
                     english.focus();

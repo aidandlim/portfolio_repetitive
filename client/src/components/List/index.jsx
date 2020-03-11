@@ -15,14 +15,14 @@ const List = ({ login }) => {
         setList([]);
         setIsDone(false);
 
-        get(login, getType(type), res => {
+        get(login.username, getType(type), res => {
             setList(res.data);
             setIsDone(true);
         });
-    }, [login, type]);
+    }, [login.username, type]);
 
     const _handleDelete = id => {
-        remove(login, getType(type), id, res => {
+        remove(login.username, getType(type), id, res => {
             if (res.status === 200) {
                 setList(res.data);
             }
