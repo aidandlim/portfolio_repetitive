@@ -16,3 +16,14 @@ export const auth = (username, password, cb) => {
         cb(res);
     });
 };
+
+export const putAuth = (username, type, cb) => {
+    const data = {
+        username,
+        type
+    };
+
+    axios.put(`/api/auth`, data).then(res => {
+        cb(res);
+    });
+};

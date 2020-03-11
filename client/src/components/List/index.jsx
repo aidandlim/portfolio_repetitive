@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Type from '../Type';
 
-import { getAuth, get, remove, getType } from '../../data';
+import { getAuth, putAuth, get, remove, getType } from '../../data';
 
 import './index.css';
 
@@ -30,6 +30,12 @@ const List = ({ login }) => {
         });
     }, [login, type]);
 
+    const _handlePublic = () => {
+        putAuth(login, type, (res) => {
+            setUser(res.data);
+        });
+    }
+
     const _handleDelete = id => {
         remove(login, getType(type), id, res => {
             if (res.status === 200) {
@@ -51,6 +57,7 @@ const List = ({ login }) => {
                                 ? 'list-public-toggle-active'
                                 : 'list-public-toggle'
                         }
+                        onClick={_handlePublic}
                     >
                         <div
                             className={

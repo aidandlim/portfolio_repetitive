@@ -78,6 +78,33 @@ app.post('/api/auth', (req, res) => {
     }
 });
 
+app.put('/api/auth', (req, res) => {
+    const username = req.body.username;
+    const type = req.body.type;
+
+    const filePath = path.join(__dirname, 'store', 'user');
+    const rawData = fs.readFileSync(filePath, 'utf8');
+
+    let array = JSON.parse(rawData);
+    const index = array.findIndex(element => element.username == username);
+
+    if (type === 0) {
+        array[index].isPublicPatterns = !array[index].isPublicPatterns;
+    } else if (type === 1) {
+        array[index].isPublicChunks = !array[index].isPublicChunks;
+    }
+
+    fs.writeFileSync(filePath, JSON.stringify(array));
+
+    const data = array[index];
+    res.json({
+        id: data.id,
+        username: data.username,
+        isPublicPatterns: data.isPublicPatterns,
+        isPublicChunks: data.isPublicChunks
+    });
+});
+
 app.get('/api/:login/:type', (req, res) => {
     const login = req.params.login;
     const type = req.params.type;
