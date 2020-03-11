@@ -8,7 +8,7 @@ import './index.css';
 
 const List = ({ login }) => {
     const [user, setUser] = useState({
-        id: -1,
+        id: -1
     });
     const [type, setType] = useState(0);
     const [list, setList] = useState([]);
@@ -31,10 +31,10 @@ const List = ({ login }) => {
     }, [login, type]);
 
     const _handlePublic = () => {
-        putAuth(login, type, (res) => {
+        putAuth(login, type, res => {
             setUser(res.data);
         });
-    }
+    };
 
     const _handleDelete = id => {
         remove(login, getType(type), id, res => {

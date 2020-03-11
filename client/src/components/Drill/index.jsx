@@ -16,7 +16,7 @@ const Drill = ({ login, setMode }) => {
 
         for (let i = 0; i < getTypeSize(); i++) {
             get(login, getType(i), res => {
-                if(res.data.length === 0) {
+                if (res.data.length === 0) {
                     alert(`It needs to have at least one data in ${getType(i)} list :(`);
                     setMode(0);
                 }
@@ -57,7 +57,7 @@ const Drill = ({ login, setMode }) => {
         }
     };
 
-    const _handleHint = (manual) => {
+    const _handleHint = manual => {
         if (manual || isHint) {
             document.querySelector('.drill-process-english').style.display = 'none';
             document.querySelector('.drill-process-korean').style.display = 'block';
@@ -88,7 +88,10 @@ const Drill = ({ login, setMode }) => {
                     </div>
                 ) : (
                     <div className='drill-process'>
-                        <div className='drill-number'>{numberOfDone === numberOfDrill ? numberOfDrill : numberOfDone + 1} / {numberOfDrill}</div>
+                        <div className='drill-number'>
+                            {numberOfDone === numberOfDrill ? numberOfDrill : numberOfDone + 1} /{' '}
+                            {numberOfDrill}
+                        </div>
                         <div className='drill-process-text'>
                             <div className='drill-process-english'>
                                 {drillSet.map((drill, index) => (

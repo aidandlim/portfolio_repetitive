@@ -38,9 +38,25 @@
 
 > Add
 
+- You can add patterns & chunks for the drill feature.
+
+- Also, it's going to provide downloading list from other users' public list soon.
+
 > List
 
+- You can check your lists easily.
+
+- If there are some mistakes, you can just hit red "x" button for deleting that.
+
+- Also, it's going to provide modifying feature soon.
+
 > Drill
+
+- It's for the practice over and over again.
+
+- You just select number how many you want to do that, and start!
+
+- Have fun!
 
 ---
 
