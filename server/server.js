@@ -18,6 +18,28 @@ app.use(bodyParser.json());
 
 const PORT = 8443;
 
+app.get('/api/auth/:username', (req, res) => {
+    const username = req.params.username;
+
+    const filePath = path.join(__dirname, 'store', 'user');
+    const rawData = fs.readFileSync(filePath, 'utf8');
+
+    const array = JSON.parse(rawData);
+    const index = array.findIndex(element => element.username == username);
+
+    if (index === -1) {
+        res.json(null);
+    } else {
+        const data = array[index];
+        res.json({
+            id: data.id,
+            username: data.username,
+            isPublicPatterns: data.isPublicPatterns,
+            isPublicChunks: data.isPublicChunks
+        });
+    }
+});
+
 app.post('/api/auth', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -29,9 +51,15 @@ app.post('/api/auth', (req, res) => {
     const index = array.findIndex(element => element.username == username);
 
     if (index === -1) {
-        const data = { id: Date.now(), username, password, isPublicPatterns: false, isPublicChunks: false };
+        const data = {
+            id: Date.now(),
+            username,
+            password,
+            isPublicPatterns: false,
+            isPublicChunks: false
+        };
         array.push(data);
-        
+
         fs.writeFileSync(filePath, JSON.stringify(array));
 
         const dirPath = path.join(__dirname, 'store');

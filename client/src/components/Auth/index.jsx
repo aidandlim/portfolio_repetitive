@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import cookie from 'react-cookies';
+
 import { auth } from '../../data';
 
 import './index.css';
@@ -7,7 +9,13 @@ import './index.css';
 const Auth = ({ setLogin }) => {
     useEffect(() => {
         document.form_auth.username.focus();
-    }, []);
+
+        const login = cookie.load('login');
+
+        if (login !== undefined) {
+            setLogin(login);
+        }
+    }, [setLogin]);
 
     const _handleForm = e => {
         e.preventDefault();
@@ -16,9 +24,12 @@ const Auth = ({ setLogin }) => {
         const username = form.username.value;
         const password = form.password.value;
 
-        auth(username, password, (res) => {
-            if(res.data !== null) {
-                setLogin(res.data);
+        auth(username, password, res => {
+            if (res.data !== null) {
+                setLogin(res.data.username);
+                cookie.save('login', res.data.username, {
+                    path: '/'
+                });
             } else {
                 alert('User information is not correct :(');
             }

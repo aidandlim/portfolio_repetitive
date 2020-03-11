@@ -14,7 +14,7 @@ const App = () => {
     return (
         <Wrapper className='no-drag'>
             <div className='app'>
-                <Header />
+                <Header setLogin={setLogin} />
                 {login !== '' ? <Body login={login} /> : <Auth setLogin={setLogin} />}
             </div>
         </Wrapper>

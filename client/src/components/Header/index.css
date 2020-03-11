@@ -5,7 +5,7 @@
     position: relative;
     float: left;
 
-    background-color: #00BFA5;
+    background-color: #00bfa5;
 }
 
 .header-title {
@@ -20,6 +20,24 @@
     color: white;
     font-size: 1.25rem;
     font-weight: 900;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.header-signout {
+    width: auto;
+    height: 3rem;
+
+    margin-right: 0.5rem;
+
+    position: relative;
+    float: right;
+
+    color: #b2dfdb;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 3rem;
 
     cursor: pointer;
     outline: none;
