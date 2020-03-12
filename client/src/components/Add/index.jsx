@@ -13,14 +13,18 @@ const Add = ({ login }) => {
         document.form_add.english.focus();
     }, [type]);
 
+    let isProcessing = false;
+
     const _handleForm = e => {
         e.preventDefault();
+
+        isProcessing = true;
 
         const form = document.form_add;
         const english = form.english;
         const korean = form.korean;
 
-        if (english.value !== '' && korean.value !== '') {
+        if (!isProcessing && english.value !== '' && korean.value !== '') {
             post(login, getType(type), english.value, korean.value, res => {
                 if (res.status === 200) {
                     english.value = '';
@@ -29,6 +33,7 @@ const Add = ({ login }) => {
                 } else {
                     alert('Error occured!');
                 }
+                isProcessing = true;
             });
         }
     };
@@ -40,7 +45,9 @@ const Add = ({ login }) => {
                 <form name='form_add' onSubmit={_handleForm} autoComplete='off'>
                     <input className='add-input' type='text' name='english' placeholder='English' />
                     <input className='add-input' type='text' name='korean' placeholder='Korean' />
-                    <button className='add-button' type='submit'>SAVE</button>
+                    <button className='add-button' type='submit'>
+                        SAVE
+                    </button>
                 </form>
             </div>
         </div>
