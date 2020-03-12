@@ -15,7 +15,6 @@
     width: 100%;
     height: auto;
 
-    margin-top: 5rem;
     margin-bottom: 2rem;
     
     position: relative;
@@ -24,13 +23,15 @@
 
 .default-container {
     width: calc(100% - 4rem);
+    max-width: 40rem;
     height: auto;
 
-    margin: 0 2rem;
     padding: 1rem;
 
     position: relative;
     float: left;
+    left: 50%;
+    transform: translate(-50%, 0);
 
     background-color: #B2DFDB;
     box-sizing: border-box;

@@ -8,10 +8,11 @@ import './index.css';
 
 const Add = ({ login }) => {
     const [type, setType] = useState(0);
+    const [isCloudMode, setIsCloudMode] = useState(false);
 
     useEffect(() => {
-        document.form_add.english.focus();
-    }, [type]);
+        if (!isCloudMode) document.form_add.english.focus();
+    }, [type, isCloudMode]);
 
     let isProcessing = false;
 
@@ -38,17 +39,51 @@ const Add = ({ login }) => {
         }
     };
 
+    const _handleIsCloudMode = () => {
+        setIsCloudMode(isCloudMode => !isCloudMode);
+    };
+
     return (
         <div className='default'>
             <div className='default-container'>
                 <Type type={type} setType={setType} />
-                <form name='form_add' onSubmit={_handleForm} autoComplete='off'>
-                    <input className='add-input' type='text' name='english' placeholder='English' />
-                    <input className='add-input' type='text' name='korean' placeholder='Korean' />
-                    <button className='add-button' type='submit'>
-                        SAVE
-                    </button>
-                </form>
+                {isCloudMode ? (
+                    <div className='default-wrapper'>
+                        <div className='add-cloud-null'>It is under construction :(</div>
+                        <button
+                            className='add-cloud-button'
+                            type='button'
+                            onClick={_handleIsCloudMode}
+                        >
+                            BACK TO ADD MODE
+                        </button>
+                    </div>
+                ) : (
+                    <form name='form_add' onSubmit={_handleForm} autoComplete='off'>
+                        <input
+                            className='add-input'
+                            type='text'
+                            name='english'
+                            placeholder='English'
+                        />
+                        <input
+                            className='add-input'
+                            type='text'
+                            name='korean'
+                            placeholder='Korean'
+                        />
+                        <button
+                            className='add-cloud-button'
+                            type='button'
+                            onClick={_handleIsCloudMode}
+                        >
+                            ADD FROM CLOUD
+                        </button>
+                        <button className='add-button' type='submit'>
+                            SAVE
+                        </button>
+                    </form>
+                )}
             </div>
         </div>
     );
