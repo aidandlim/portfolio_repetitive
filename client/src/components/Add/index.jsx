@@ -19,13 +19,12 @@ const Add = ({ login }) => {
     const _handleForm = e => {
         e.preventDefault();
 
-        isProcessing = true;
-
         const form = document.form_add;
         const english = form.english;
         const korean = form.korean;
 
         if (!isProcessing && english.value !== '' && korean.value !== '') {
+            isProcessing = true;
             post(login, getType(type), english.value, korean.value, res => {
                 if (res.status === 200) {
                     english.value = '';
@@ -34,7 +33,7 @@ const Add = ({ login }) => {
                 } else {
                     alert('Error occured!');
                 }
-                isProcessing = true;
+                isProcessing = false;
             });
         }
     };
