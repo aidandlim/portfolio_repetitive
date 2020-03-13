@@ -133,6 +133,26 @@ app.post('/api/:login/:type', (req, res) => {
     res.end();
 });
 
+app.put('/api/:login/:type', (req, res) => {
+    const login = req.params.login;
+    const type = req.params.type;
+    const id = req.body.id;
+    const english = req.body.english;
+    const korean = req.body.korean;
+
+    const filePath = path.join(__dirname, 'store', login, type);
+    const rawData = fs.readFileSync(filePath, 'utf8');
+
+    let array = JSON.parse(rawData);
+    const index = array.findIndex(element => element.id == +id);
+    array[index].english = english;
+    array[index].korean = korean;
+
+    fs.writeFileSync(filePath, JSON.stringify(array));
+
+    res.json(array);
+});
+
 app.delete('/api/:login/:type/:id', (req, res) => {
     const login = req.params.login;
     const type = req.params.type;

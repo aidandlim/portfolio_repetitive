@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Type from '../Type';
 
-import { getAuth, putAuth, get, remove, getType } from '../../data';
+import { getAuth, putAuth, get, update, remove, getType } from '../../data';
 
 import './index.css';
 
@@ -35,6 +35,15 @@ const List = ({ login }) => {
             setUser(res.data);
         });
     };
+
+    const _handleUpdate = index => {
+        const english = prompt('Update English', list[index].english);
+        const korean = prompt('Update Korean', list[index].korean);
+
+        update(login, getType(type), list[index].id, english, korean, (res) => {
+            setList(res.data);
+        });
+    }
 
     const _handleDelete = id => {
         remove(login, getType(type), id, res => {
@@ -72,8 +81,8 @@ const List = ({ login }) => {
                 {list.length !== 0 ? (
                     list.map((data, index) => (
                         <div className='list-element' key={index}>
-                            <div>{data.english}</div>
-                            <div>{data.korean}</div>
+                            <div onClick={() => _handleUpdate(index)}>{data.english}</div>
+                            <div onClick={() => _handleUpdate(index)}>{data.korean}</div>
                             <button
                                 className='list-element-delete'
                                 onClick={() => _handleDelete(data.id)}
