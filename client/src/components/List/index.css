@@ -12,68 +12,6 @@
     text-align: center;
 }
 
-.list-public-container {
-    width: auto;
-    height: 1.2rem;
-
-    margin: 0 1rem 1.5rem 1rem;
-
-    position: relative;
-    float: right;
-}
-
-.list-public-title {
-    width: auto;
-    height: 100%;
-
-    margin-right: 0.5rem;
-
-    position: relative;
-    float: left;
-
-    color: #009688;
-    font-size: 0.5rem;
-    font-weight: 300;
-    line-height: 1.2rem;
-}
-
-.list-public-toggle,
-.list-public-toggle-active {
-    width: 2.4rem;
-    height: 100%;
-
-    position: relative;
-    float: left;
-
-    background-color: #bdbdbd;
-    border-radius: 0.6rem;
-
-    transition: 0.5s;
-}
-
-.list-public-toggle-active {
-    background-color: #4db6ac;
-}
-
-.list-public-toggle-button,
-.list-public-toggle-button-active {
-    width: 1.2rem;
-    height: 1.2rem;
-
-    position: relative;
-    float: left;
-    left: 0%;
-
-    background-color: #ffffff;
-    border-radius: 0.6rem;
-
-    transition: 0.5s;
-}
-
-.list-public-toggle-button-active {
-    left: 50%;
-}
-
 .list-element {
     width: calc(100% - 2rem);
     height: 2rem;

@@ -1,0 +1,61 @@
+.publicToggle-container {
+    width: auto;
+    height: 1.2rem;
+
+    margin: 0 1rem 1.5rem 1rem;
+
+    position: relative;
+    float: right;
+}
+
+.publicToggle-title {
+    width: auto;
+    height: 100%;
+
+    margin-right: 0.5rem;
+
+    position: relative;
+    float: left;
+
+    color: #009688;
+    font-size: 0.5rem;
+    font-weight: 300;
+    line-height: 1.2rem;
+}
+
+.publicToggle-toggle,
+.publicToggle-toggle-active {
+    width: 2.4rem;
+    height: 100%;
+
+    position: relative;
+    float: left;
+
+    background-color: #bdbdbd;
+    border-radius: 0.6rem;
+
+    transition: 0.5s;
+}
+
+.publicToggle-toggle-active {
+    background-color: #4db6ac;
+}
+
+.publicToggle-toggle-button,
+.publicToggle-toggle-button-active {
+    width: 1.2rem;
+    height: 1.2rem;
+
+    position: relative;
+    float: left;
+    left: 0%;
+
+    background-color: #ffffff;
+    border-radius: 0.6rem;
+
+    transition: 0.5s;
+}
+
+.publicToggle-toggle-button-active {
+    left: 50%;
+}

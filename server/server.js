@@ -170,4 +170,27 @@ app.delete('/api/:login/:type/:id', (req, res) => {
     res.json(array);
 });
 
+app.get('/api/cloud/:login/:type', (req, res) => {
+    const login = req.params.login;
+    const type = req.params.type;
+
+    const filePath = path.join(__dirname, 'store', 'user');
+    const rawData = fs.readFileSync(filePath, 'utf8');
+
+    const array = JSON.parse(rawData);
+    let result = array.filter(
+        element =>
+            element.username !== login &&
+            (type === 'patterns' ? element.isPublicPatterns : element.isPublicChunks)
+    );
+
+    for (let i = 0; i < result.length; i++) {
+        result[i] = {
+            username: result[i].username
+        };
+    }
+
+    res.json(result);
+});
+
 server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

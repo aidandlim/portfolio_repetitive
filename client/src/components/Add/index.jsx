@@ -2,17 +2,24 @@ import React, { useState, useEffect } from 'react';
 
 import Type from '../Type';
 
-import { post, getType } from '../../data';
+import { post, getType, getCloud } from '../../data';
 
 import './index.css';
 
 const Add = ({ login }) => {
     const [type, setType] = useState(0);
     const [isCloudMode, setIsCloudMode] = useState(false);
+    const [cloudList, setCloudList] = useState([]);
 
     useEffect(() => {
-        if (!isCloudMode) document.form_add.english.focus();
-    }, [type, isCloudMode]);
+        if (!isCloudMode) {
+            document.form_add.english.focus();
+        } else {
+            getCloud(login, getType(type), res => {
+                setCloudList(res.data);
+            });
+        }
+    }, [login, type, isCloudMode]);
 
     let isProcessing = false;
 
@@ -48,7 +55,12 @@ const Add = ({ login }) => {
                 <Type type={type} setType={setType} />
                 {isCloudMode ? (
                     <div className='default-wrapper'>
-                        <div className='add-cloud-null'>It is under construction :(</div>
+                        {cloudList.length === 0 ? (
+                            <div className='add-cloud-null'>There is no cloud list :(</div>
+                        ) : (
+                            cloudList.map((element, index) => <div className='add-cloud-list' key={index}>{element.username}'s {getType(type)} list.</div>)
+                            
+                        )}
                         <button
                             className='add-cloud-button'
                             type='button'

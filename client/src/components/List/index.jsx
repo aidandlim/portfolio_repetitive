@@ -1,26 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 import Type from '../Type';
+import PublicToggle from '../PublicToggle';
 
-import { getAuth, putAuth, get, update, remove, getType } from '../../data';
+import { get, update, remove, getType } from '../../data';
 
 import FeatherIcons from 'feather-icons-react';
 
 import './index.css';
 
 const List = ({ login }) => {
-    const [user, setUser] = useState({
-        id: -1
-    });
     const [type, setType] = useState(0);
     const [list, setList] = useState([]);
     const [isDone, setIsDone] = useState(false);
-
-    useEffect(() => {
-        getAuth(login, res => {
-            setUser(res.data);
-        });
-    }, [login]);
 
     useEffect(() => {
         setList([]);
@@ -31,12 +23,6 @@ const List = ({ login }) => {
             setIsDone(true);
         });
     }, [login, type]);
-
-    const _handlePublic = () => {
-        putAuth(login, type, res => {
-            setUser(res.data);
-        });
-    };
 
     const _handleUpdate = index => {
         const english = prompt('Update English', list[index].english);
@@ -61,27 +47,7 @@ const List = ({ login }) => {
         <div className='default'>
             <div className='default-container'>
                 <Type type={type} setType={setType} />
-                <div className='list-public-container'>
-                    <div className='list-public-title'>DO YOU WANT TO MAKE IT PUBLIC?</div>
-                    <div
-                        className={
-                            (type === 0 && user.id !== -1 && user.isPublicPatterns === true) ||
-                            (type === 1 && user.id !== -1 && user.isPublicChunks === true)
-                                ? 'list-public-toggle-active'
-                                : 'list-public-toggle'
-                        }
-                        onClick={_handlePublic}
-                    >
-                        <div
-                            className={
-                                (type === 0 && user.id !== -1 && user.isPublicPatterns === true) ||
-                                (type === 1 && user.id !== -1 && user.isPublicChunks === true)
-                                    ? 'list-public-toggle-button-active'
-                                    : 'list-public-toggle-button'
-                            }
-                        ></div>
-                    </div>
-                </div>
+                <PublicToggle login={login} type={type} />
                 {list.length !== 0 ? (
                     list.map((data, index) => (
                         <div className='list-element' key={index}>
