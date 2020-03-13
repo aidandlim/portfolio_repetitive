@@ -12,6 +12,10 @@ const Drill = ({ login, setMode }) => {
     const [isHint, setIsHint] = useState(false);
 
     useEffect(() => {
+        document.form_numofdrill.number.focus();
+    }, []);
+
+    useEffect(() => {
         let list = [];
 
         for (let i = 0; i < getTypeSize(); i++) {
