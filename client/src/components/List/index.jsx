@@ -4,6 +4,8 @@ import Type from '../Type';
 
 import { getAuth, putAuth, get, update, remove, getType } from '../../data';
 
+import FeatherIcons from 'feather-icons-react';
+
 import './index.css';
 
 const List = ({ login }) => {
@@ -38,12 +40,14 @@ const List = ({ login }) => {
 
     const _handleUpdate = index => {
         const english = prompt('Update English', list[index].english);
+        if (english === null) return;
         const korean = prompt('Update Korean', list[index].korean);
+        if (korean === null) return;
 
-        update(login, getType(type), list[index].id, english, korean, (res) => {
+        update(login, getType(type), list[index].id, english, korean, res => {
             setList(res.data);
         });
-    }
+    };
 
     const _handleDelete = id => {
         remove(login, getType(type), id, res => {
@@ -81,14 +85,18 @@ const List = ({ login }) => {
                 {list.length !== 0 ? (
                     list.map((data, index) => (
                         <div className='list-element' key={index}>
-                            <div onClick={() => _handleUpdate(index)}>{data.english}</div>
-                            <div onClick={() => _handleUpdate(index)}>{data.korean}</div>
-                            <button
-                                className='list-element-delete'
+                            <FeatherIcons
+                                className='list-element-icon-update'
+                                icon='edit'
+                                onClick={() => _handleUpdate(index)}
+                            />
+                            <div>{data.english}</div>
+                            <div>{data.korean}</div>
+                            <FeatherIcons
+                                className='list-element-icon-delete'
+                                icon='x-circle'
                                 onClick={() => _handleDelete(data.id)}
-                            >
-                                X
-                            </button>
+                            />
                         </div>
                     ))
                 ) : (
