@@ -60,12 +60,6 @@
 
 ---
 
-## Live Demo
-
-> Click <a href="https://repetitive.aidandlim.com" target="_blank">`HERE`</a> to check it out right now.
-
----
-
 ## Aidan Lim (@dlim in 42 Silicon Valley)
 
 - A Web & App developer who love traveling.
